@@ -9,7 +9,15 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
 ));
 
+builder.Services.AddCors();
+
 var app = builder.Build();
+
+app.UseHttpsRedirection();
+
+app.UseCors(x => x.AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .WithOrigins("https://localhost:4200"));
 
 app.MapControllers();
 
