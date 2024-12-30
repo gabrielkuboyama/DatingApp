@@ -35,7 +35,5 @@ public class TokenService(IConfiguration config) : ITokenService
         var token = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(token);
-
-        return null;
     }
 }
